@@ -79,14 +79,14 @@ main {
   justify-content: center;
 }
 
-/* ===== ボタン ===== */
+/* ===== ボタン（高さ300px） ===== */
 .script-btn {
   width: 95%;
-  height: 135px;
-  font-size: 26px;
+  height: 300px;   /* ← ここが300 */
+  font-size: 30px;
   background: linear-gradient(135deg, #ff0000, #7a0000);
   border: none;
-  border-radius: 26px;
+  border-radius: 30px;
   color: white;
   font-weight: bold;
   box-shadow: 0 0 40px red;
@@ -123,6 +123,7 @@ main {
   <a href="#" onclick="toggleMenu()">Script</a>
 </div>
 
+<!-- ★ Script文字は完全に存在しない -->
 <main>
   <div class="container">
     <button class="script-btn" onclick="copyScript()">
