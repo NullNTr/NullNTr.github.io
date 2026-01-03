@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Script Hub</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* ヘッダー */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #222;
+}
+
+header h1 {
+  color: red;
+}
+
+/* ハンバーガー */
+.menu {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* タブメニュー */
+.nav {
+  position: fixed;
+  top: 0;
+  right: -220px;
+  width: 220px;
+  height: 100%;
+  background: #0b0b0b;
+  padding-top: 60px;
+  transition: 0.3s;
+}
+
+.nav a {
+  display: block;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+}
+
+.nav a:hover {
+  background: red;
+}
+
+/* メイン */
+main {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ボタン */
+.script-btn {
+  width: 80%;
+  max-width: 400px;
+  padding: 30px;
+  font-size: 20px;
+  background: linear-gradient(135deg, #ff0000, #7a0000);
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 25px red;
+}
+
+.script-btn:hover {
+  box-shadow: 0 0 40px red;
+  transform: scale(1.03);
+}
+
+/* 通知 */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: red;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Null Hub</h1>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="nav" id="nav">
+  <a href="#" onclick="showTab('script')">Script</a>
+</div>
+
+<main id="content">
+  <h2>Script</h2>
+  <br><br>
+  <button class="script-btn" onclick="copyScript()">
+    SCRIPT COPY
+  </button>
+</main>
+
+<div class="toast" id="toast">✅ コピペしました！</div>
+
+<script>
+const scriptText = `loadstring(game:HttpGet("https://raw.githubusercontent.com/NullNTr/NullScript/refs/heads/main/NullHub.lua"))()`;
+
+function toggleMenu() {
+  const nav = document.getElementById("nav");
+  nav.style.right = nav.style.right === "0px" ? "-220px" : "0px";
+}
+
+function showTab(tab) {
+  toggleMenu();
+}
+
+function copyScript() {
+  navigator.clipboard.writeText(scriptText).then(() => {
+    const toast = document.getElementById("toast");
+    toast.style.display = "block";
+    setTimeout(() => {
+      toast.style.display = "none";
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html
