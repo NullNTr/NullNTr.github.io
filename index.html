@@ -2,98 +2,111 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Script Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Null Hub</title>
+
 <style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
   background: #000;
   color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* ヘッダー */
+/* ===== ヘッダー ===== */
 header {
+  height: 60px;
+  padding: 0 16px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  border-bottom: 1px solid #222;
+  justify-content: space-between;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 header h1 {
   color: red;
+  font-size: 20px;
 }
 
-/* ハンバーガー */
 .menu {
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
 }
 
-/* タブメニュー */
+/* ===== ナビ（全画面） ===== */
 .nav {
   position: fixed;
-  top: 0;
-  right: -220px;
-  width: 220px;
-  height: 100%;
-  background: #0b0b0b;
-  padding-top: 60px;
-  transition: 0.3s;
+  inset: 0;
+  background: rgba(0,0,0,0.97);
+  display: none;
+  flex-direction: column;
+  padding-top: 80px;
+  z-index: 999;
 }
 
 .nav a {
-  display: block;
-  padding: 15px;
+  padding: 20px;
+  text-align: center;
+  font-size: 22px;
   color: #fff;
   text-decoration: none;
   border-bottom: 1px solid #222;
 }
 
-.nav a:hover {
+.nav a:active {
   background: red;
 }
 
-/* メイン */
+/* ===== メイン ===== */
 main {
-  padding: 40px 20px;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
   text-align: center;
 }
 
-/* ボタン */
+/* ===== ボタン ===== */
 .script-btn {
-  width: 80%;
-  max-width: 400px;
-  padding: 30px;
-  font-size: 20px;
-  background: linear-gradient(135deg, #ff0000, #7a0000);
+  width: 100%;
+  height: 80px;
+  font-size: 22px;
+  background: linear-gradient(135deg, #ff0000, #8b0000);
   border: none;
-  border-radius: 15px;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 0 25px red;
+  border-radius: 18px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 30px red;
 }
 
-.script-btn:hover {
-  box-shadow: 0 0 40px red;
-  transform: scale(1.03);
+.script-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 50px red;
 }
 
-/* 通知 */
+/* ===== 通知 ===== */
 .toast {
   position: fixed;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   background: red;
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 16px;
   display: none;
 }
 </style>
@@ -107,15 +120,15 @@ main {
 </header>
 
 <div class="nav" id="nav">
-  <a href="#" onclick="showTab('script')">Script</a>
+  <a href="#" onclick="openScript()">Script</a>
 </div>
 
-<main id="content">
-  <h2>Script</h2>
-  <br><br>
-  <button class="script-btn" onclick="copyScript()">
-    SCRIPT COPY
-  </button>
+<main>
+  <div class="container">
+    <button class="script-btn" onclick="copyScript()">
+      SCRIPT COPY
+    </button>
+  </div>
 </main>
 
 <div class="toast" id="toast">✅ コピペしました！</div>
@@ -125,10 +138,10 @@ const scriptText = `loadstring(game:HttpGet("https://raw.githubusercontent.com/N
 
 function toggleMenu() {
   const nav = document.getElementById("nav");
-  nav.style.right = nav.style.right === "0px" ? "-220px" : "0px";
+  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
 }
 
-function showTab(tab) {
+function openScript() {
   toggleMenu();
 }
 
@@ -144,4 +157,4 @@ function copyScript() {
 </script>
 
 </body>
-</html
+</html>
