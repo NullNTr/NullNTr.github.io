@@ -76,22 +76,14 @@ main {
   width: 100%;
   padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  justify-content: center;
 }
 
-/* ===== タイトル ===== */
-.section-title {
-  font-size: 26px;
-  letter-spacing: 2px;
-}
-
-/* ===== 超デカボタン ===== */
+/* ===== ボタン ===== */
 .script-btn {
   width: 95%;
-  height: 400px; /* ← 120 → 135 に変更 */
-  font-size: 28px;
+  height: 135px;
+  font-size: 26px;
   background: linear-gradient(135deg, #ff0000, #7a0000);
   border: none;
   border-radius: 26px;
@@ -128,14 +120,13 @@ main {
 </header>
 
 <div class="nav" id="nav">
-  <a href="#" onclick="openScript()">Script</a>
+  <a href="#" onclick="toggleMenu()">Script</a>
 </div>
 
 <main>
   <div class="container">
-    <div class="section-title">Script</div>
     <button class="script-btn" onclick="copyScript()">
-      SCRIPT COPY
+      Null Hub Script Copy
     </button>
   </div>
 </main>
@@ -148,10 +139,6 @@ const scriptText = `loadstring(game:HttpGet("https://raw.githubusercontent.com/N
 function toggleMenu() {
   const nav = document.getElementById("nav");
   nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-}
-
-function openScript() {
-  toggleMenu();
 }
 
 function copyScript() {
